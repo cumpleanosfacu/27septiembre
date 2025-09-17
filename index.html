@@ -1,1 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Estás invitado al cumple de Facundo!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(170deg, #0d3a5f 0%, #206a8f 100%);
+            overflow-x: hidden;
+            color: #f0f4f8;
+        }
+
+        .font-brand {
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .card-container {
+            animation: popIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .fade-in-down {
+            opacity: 0;
+            animation: fadeInDown 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            opacity: 0.9;
+            animation: fall linear forwards;
+            top: -20px;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .banner {
+            background-color: #f9a826; /* Naranja/amarillo del original */
+            position: relative;
+            padding: 1rem 2rem;
+            margin: 1.5rem 0;
+            color: #1e3a8a; /* Azul oscuro para el texto */
+            clip-path: polygon(0% 0%, 100% 0%, 95% 50%, 100% 100%, 0% 100%, 5% 50%);
+            filter: drop-shadow(0 4px 3px rgba(0,0,0,0.3));
+        }
+        
+        .bunting {
+            position: absolute;
+            top: -25px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            z-index: 1;
+        }
+
+        .bunting-flag {
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 30px solid;
+            margin: 0 -5px;
+            transform-origin: top center;
+            animation: swing 1.5s infinite ease-in-out;
+        }
+        
+        .airplane-drawing {
+            position: absolute;
+            z-index: 2;
+            opacity: 0.5;
+            animation: fly-by 15s linear infinite;
+        }
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(12deg); }
+            50% { transform: rotate(-12deg); }
+        }
+
+        @keyframes fly-by {
+            0% { transform: translateX(-150px) translateY(20px) rotate(-15deg); }
+            100% { transform: translateX(calc(100vw + 150px)) translateY(-20px) rotate(10deg); }
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full flex items-center justify-center p-4 relative">
+    <!-- Contenedor de elementos de fondo -->
+    <div id="background-elements" class="absolute inset-0 z-0 overflow-hidden">
+        <svg class="airplane-drawing" style="top: 20%; left: -100px; animation-duration: 18s;" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1.5-1.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.7 5.7c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+        <svg class="airplane-drawing" style="top: 60%; left: -100px; animation-delay: 5s;" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1.5-1.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.7 5.7c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+    </div>
+
+    <!-- Contenedor principal de la tarjeta -->
+    <main class="card-container w-full max-w-sm md:max-w-md bg-white/5 backdrop-blur-md rounded-3xl shadow-2xl text-center p-6 md:p-8 z-10 border border-white/10 relative">
+        
+        <!-- Banderines Superiores -->
+        <div class="bunting">
+            <div class="bunting-flag" style="border-color: #facc15 transparent transparent; animation-delay: 0s;"></div>
+            <div class="bunting-flag" style="border-color: #ef4444 transparent transparent; animation-delay: -0.2s;"></div>
+            <div class="bunting-flag" style="border-color: #3b82f6 transparent transparent; animation-delay: -0.4s;"></div>
+            <div class="bunting-flag" style="border-color: #f97316 transparent transparent; animation-delay: -0.6s;"></div>
+            <div class="bunting-flag" style="border-color: #22c55e transparent transparent; animation-delay: -0.8s;"></div>
+            <div class="bunting-flag" style="border-color: #facc15 transparent transparent; animation-delay: -1.0s;"></div>
+            <div class="bunting-flag" style="border-color: #ef4444 transparent transparent; animation-delay: -1.2s;"></div>
+            <div class="bunting-flag" style="border-color: #3b82f6 transparent transparent; animation-delay: -1.4s;"></div>
+            <div class="bunting-flag" style="border-color: #f97316 transparent transparent; animation-delay: -1.6s;"></div>
+            <div class="bunting-flag" style="border-color: #22c55e transparent transparent; animation-delay: -1.8s;"></div>
+            <div class="bunting-flag" style="border-color: #facc15 transparent transparent; animation-delay: -2.0s;"></div>
+            <div class="bunting-flag" style="border-color: #ef4444 transparent transparent; animation-delay: -2.2s;"></div>
+        </div>
+        
+        <!-- Título principal -->
+        <h1 class="font-brand text-5xl md:text-6xl text-white mt-10 drop-shadow-lg fade-in-down" style="animation-delay: 0.2s;">
+            Facundo León
+        </h1>
+
+        <!-- Foto de Facundo -->
+        <div class="relative my-4 fade-in-down" style="animation-delay: 0.4s;">
+             <img src="https://i.ibb.co/SXFd3gB3/imagen-circular-recortada.png" alt="Foto de Facundo León" class="w-44 h-44 mx-auto rounded-full object-cover border-4 border-dashed border-white/50 shadow-lg">
+             <p class="font-brand text-4xl text-white absolute -bottom-4 w-full drop-shadow-lg">Cumple 2 Años</p>
+        </div>
+        
+        <!-- Banner de celebración -->
+        <div class="banner fade-in-down" style="animation-delay: 0.6s;">
+            <p class="font-brand text-2xl font-bold">Y queremos celebrar contigo</p>
+        </div>
+
+        <!-- Detalles del evento -->
+        <div class="flex items-center justify-center gap-4 text-white/90 fade-in-down" style="animation-delay: 0.8s;">
+            <div class="text-right">
+                <p class="font-bold text-lg">SÁBADO</p>
+                <p class="font-brand text-7xl leading-none text-white drop-shadow-md">27</p>
+                <p class="font-bold text-lg">SEPTIEMBRE</p>
+            </div>
+            <div class="h-24 w-px bg-white/50"></div>
+            <div class="text-left flex flex-col justify-center">
+                <div class="flex items-baseline gap-2">
+                    <p class="font-brand text-6xl text-white drop-shadow-md">3:00</p>
+                    <p class="font-bold text-2xl">p.m.</p>
+                </div>
+                <div class="flex items-center gap-2 mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <div>
+                        <p class="font-bold">Espacio MAAV</p>
+                        <p class="text-sm text-white/70 -mt-1">Villa Alemana</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="mt-8 flex flex-col gap-4 fade-in-down" style="animation-delay: 1s;">
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="https://maps.app.goo.gl/gWoY7iDBuym1jBWW7" target="_blank" class="flex-1 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-brand text-xl py-3 px-6 rounded-xl shadow-lg transition-transform transform hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Ver cómo llegar
+                </a>
+                
+                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Cumplea%C3%B1os%20de%20Facundo%20Le%C3%B3n&dates=20250927T150000/20250927T180000&ctz=America/Santiago&details=%C2%A1Acomp%C3%A1%C3%B1anos%20a%20celebrar%20los%202%20a%C3%B1os%20de%20Facundo!%0A%0AVer%20en%20mapa%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FgWoY7iDBuym1jBWW7&location=Espacio%20MAAV%2C%20Villa%20Alemana" target="_blank" class="flex-1 flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white font-brand text-xl py-3 px-6 rounded-xl shadow-lg transition-transform transform hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    Agendar Evento
+                </a>
+            </div>
+             <a href="https://api.whatsapp.com/send?phone=56957358812&text=%C2%A1Hola!%20Con%20mucha%20alegr%C3%ADa%20confirmo%20mi%20asistencia%20para%20celebrar%20los%202%20a%C3%B1itos%20de%20Facu%20este%2027%20de%20septiembre.%20%C2%A1All%C3%AD%20estaremos%20para%20festejar%20con%20%C3%A9l!%20%F0%9F%8E%89%20Mi%20nombre%20es%3A%20" target="_blank" class="w-full flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-brand text-2xl py-4 px-6 rounded-xl shadow-lg transition-transform transform hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                Confirmar Asistencia
+            </a>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('background-elements');
+            
+            function createConfetti() {
+                const colors = ['#fde68a', '#60a5fa', '#f87171', '#4ade80', '#f97316'];
+                for (let i = 0; i < 100; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    const shape = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.borderRadius = shape;
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = Math.random() * 3 + 5 + 's';
+                    confetti.style.animationDelay = Math.random() * 5 + 's';
+                    const size = Math.random() * 8 + 6;
+                    confetti.style.width = size + 'px';
+                    confetti.style.height = size + 'px';
+                    container.appendChild(confetti);
+
+                     setTimeout(() => {
+                        confetti.remove();
+                    }, 8000);
+                }
+            }
+
+            createConfetti();
+            setInterval(createConfetti, 5000);
+        });
+    </script>
+</body>
+</html>
+
 
